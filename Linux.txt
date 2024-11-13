@@ -1,0 +1,237 @@
+/home - User Info
+/bin - commonly used commands
+/sbin - Server related config
+/etc - confidential info like groups
+/lib - all lib
+/opt - External S/w
+/tmp - common sharing for temp file storage
+/proc - Background running processor info
+
+mkdir
+mkdir -p  --> to create subfolders
+--
+cd ../../..
+cd -  --->goes directly to parent directory
+---
+touch
+---
+rm 
+rmdir
+rm -f
+------------
+
+
+---------
+cat -n filename (to get lines in file)
+cat filename | head XX | tail XX
+
+------------
+>filename  (nullify data--removes all data inside file)
+ before u nullify take backup of file using MOVE command.
+------------
+Other way to save data into a file witout using VI editor:
+cat >filename
+asdkeflknqlkfnalkmfas
+
+(Press)Cntrl+D  --> to save data
+--------------
+Merge 2 files data into one file
+cat file1 file2 > NewFile.txt
+---------
+single > 
+Replaces data
+double >>
+Adds/appends data
+-------
+tac  -->displays in bottom to Top direction
+---------
+sort filename ---> sorts data into alphabetical/numerical order
+sort -r filename --> arranges in reverse order
+-----------
+
+---
+
+GREP 
+
+To find a error with particular KEYWORD
+grep "string name" filename.txt
+grep -i "string name" filename.txt (i -->ignore case sensitive)
+
+grep -in "string name" filename.txt (in -->ignore case sensitive & find in which line)
+grep -icn "string name" filename.txt (in -->ignore case sensitive & find in which line & counts)
+grep -l "string name" * (l checks in whole directory *)
+------------------------------------
+If log file is lenghty & floating data then how we find required string
+Before string name
+grep -iB5 "string name" filename.txt
+
+After string name
+grep -niA5 "string name" filename.txt
+
+we need both before & after
+grep -niC3 "string name" filename.txt
+
+
+WC  (Word Count)
+
+wc filename
+it displays 4 columns
+1. No of lines l
+2. No of Words w
+3. No of characters c
+4. From where this data was retreived
+
+wc -l filename
+
+wc -w filename
+
+wc -c filename
+
+wc -lw filename
+
+CP (Copy)
+cp filename destnPath/ 
+
+MV
+mv filename filename1/
+
+Renaming
+mv Oldfilename Newfilename
+
+UMASK:::::
+
+       UMASK  Defaultfile  Defaultdir
+------------------------------
+root    022 
+normal  022
+
+User   Group   Others  ---> File
+rw_    r_ _    r_ _    644
+
+User   Group   Others  ---> Dir
+rwx    r_ x    r_ x    755
+
+Base Permission for fil is : 0666
+
+0666 --> Base Perm
+0022 --> Umask Value
+0644
+
+Base Permission for dir is : 0777
+
+0777 --> Base Perm
+0022 --> Umask Value
+0755
+
+Read -- 4
+Write -- 2
+Execute -- 1
+
+chmod u+rwx filename
+chmod u+rwx,go+rw filename
+chmod ugo-rwx filename
+
+7 rwx
+5 r_x
+
+chown
+chgrp
+----
+
+-----------
+diff
+
+---
+ln (link)
+
+-
+tr used to change lower to upper case
+---
+find
+find . -type f -empty (to find empty files)
+
+find . -type f -name filename
+----
+
+SED (stream editor)
+
+sed 's/am/was' filename
+sed 's/am/was/g' filename
+
+---
+cat -n filename (to get line number)
+sed '8 s/jenkins/docker/' filename
+
+---
+sed 's/frontend/backend/g' filename
+sed '1,5 s/jenkins/docker/' filename
+sed '4,7d
+---------
+W
+uptime
+where is
+--
+while giving O/P to anyone
+date
+uptime
+date
+
+----------
+::::::awk:::::::
+awk '{print}' employee.txt
+awk '/suman/ {print}' employee.txt
+
+awk '{print $1}' employee.txt
+awk '{print $1,"---->",S2}' employee.txt
+::::::service:::
+
+::::systemctl:::::
+systemctl start/stop/status sshd
+
+::::last:::
+
+::::ps:::
+ps -ef 
+
+ps -ef|grep -iE "ec2-user|root" -->display
+
+
+::::::
+kill
+sigterm
+
+kill -l ---> shows kill functions list
+:::::Top:::
+
+sudo yum update -y
+
+zip
+
+unzip
+
+zcat ---> to dispaly data in zipped conntent
+
+:::::watch:::
+
+:::user add::: --> sudo useradd  kiran
+:::sudo su ---> used to switch from one user to another
+
+:::passwd:::--->sudo passwd sai   (asks for pwd setting)
+
+:::chage:::
+to set password expiry days
+sudo chage kiran
+ minimum password age [0] : 60
+ ..
+ ..
+  to check its changed or not  sudo cat /etc/shadow
+
+::Zgrep:::
+:::uniq:::  remove consecutive duplicates
+
+:::sort:::
+cat names.txt|sort|uniq
+
+:::tar:::
+tar -cvf jenkins.tar jenkins
+
